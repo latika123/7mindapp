@@ -46,7 +46,7 @@ public class HomePageSteps extends BaseSteps {
 		loginBtn.click();
 	}
 
-	@And("^Enter invalid email login credentials$")
+	@And("^Enter invalid email and password login credentials$")
 	public void iEnterInValidLoginCredentials() throws Throwable {
 		waitForElement(By.linkText(RunCucumberFeatures.locators.getProperty("didyouregisterText")));
 		WebElement didyouregisterText = DriverManager.getDriver()
@@ -73,6 +73,59 @@ public class HomePageSteps extends BaseSteps {
 
 	}
 
+	
+	
+	@And("^Enter invalid email format$")
+	public void iEnterInValidEmailCredentials() throws Throwable {
+		waitForElement(By.linkText(RunCucumberFeatures.locators.getProperty("didyouregisterText")));
+		WebElement didyouregisterText = DriverManager.getDriver()
+				.findElement(By.linkText(RunCucumberFeatures.locators.getProperty("didyouregisterText")));
+		Assert.assertEquals(didyouregisterText.getText(), "Did you register with email or Facebook?");
+		waitForElement(By.linkText(RunCucumberFeatures.locators.getProperty("emailBtn")));
+		WebElement emailBtn = DriverManager.getDriver()
+				.findElement(By.linkText(RunCucumberFeatures.locators.getProperty("emailBtn")));
+		emailBtn.click();
+
+		WebElement whatIsEmailAddressText = DriverManager.getDriver()
+				.findElement(By.linkText(RunCucumberFeatures.locators.getProperty("whatIsEmailAddressText")));
+		Assert.assertEquals(whatIsEmailAddressText.getText(), "What's your email address?");
+
+		WebElement emailAddrInput = DriverManager.getDriver()
+				.findElement(By.linkText(RunCucumberFeatures.locators.getProperty("emailAddrInput")));
+		emailAddrInput.sendKeys("hgdfjsgfhjvtriretonvutniypotirpyoiptroiupytiuytopuipouipotyipiptipot53764735843858435");
+		emailAddrInput.sendKeys(Keys.ENTER);
+		
+		
+	}
+	
+	@And("^Enter invalid password format$")
+	public void iEnterInValidPasswordCredentials() throws Throwable {
+		waitForElement(By.linkText(RunCucumberFeatures.locators.getProperty("didyouregisterText")));
+		WebElement didyouregisterText = DriverManager.getDriver()
+				.findElement(By.linkText(RunCucumberFeatures.locators.getProperty("didyouregisterText")));
+		Assert.assertEquals(didyouregisterText.getText(), "Did you register with email or Facebook?");
+		waitForElement(By.linkText(RunCucumberFeatures.locators.getProperty("emailBtn")));
+		WebElement emailBtn = DriverManager.getDriver()
+				.findElement(By.linkText(RunCucumberFeatures.locators.getProperty("emailBtn")));
+		emailBtn.click();
+
+		WebElement whatIsEmailAddressText = DriverManager.getDriver()
+				.findElement(By.linkText(RunCucumberFeatures.locators.getProperty("whatIsEmailAddressText")));
+		Assert.assertEquals(whatIsEmailAddressText.getText(), "What's your email address?");
+
+		WebElement emailAddrInput = DriverManager.getDriver()
+				.findElement(By.linkText(RunCucumberFeatures.locators.getProperty("emailAddrInput")));
+		emailAddrInput.sendKeys("enter valid email");
+		emailAddrInput.sendKeys(Keys.ENTER);
+		
+		WebElement passwordInput = DriverManager.getDriver()
+				.findElement(By.linkText(RunCucumberFeatures.locators.getProperty("passwordInput")));
+		passwordInput.sendKeys("xyz@123<script>345()*&&ytghjhjfhvfdghgfhkjgfljlgjljl-------exceeding length");
+		passwordInput.sendKeys(Keys.ENTER);
+		
+		
+	}
+	
 	@Then("^Verify that user is not allowed to login$")
 	public void userNotAllowedLogin() throws Throwable {
 		WebElement loginerrormsg = DriverManager.getDriver()
@@ -80,7 +133,19 @@ public class HomePageSteps extends BaseSteps {
 		Assert.assertEquals(loginerrormsg.getText(), "Sorry, that didn't work");
 	}
 	
-	@And("^Enter valid email login credentials$")
+	@Then("^Verify that email validation error message should appear$")
+	public void emailValidation() throws Throwable {
+		//Ideally some validation error message should appear but seems it is not handled which is a bug, hence marking this test case as failure
+		Assert.fail();
+	}
+	
+	@Then("^Verify that password validation error message should appear$")
+	public void passwordValidation() throws Throwable {
+		//Ideally some validation error message should appear but seems it is not handled which is a bug, hence marking this test case as failure
+		Assert.fail();
+	}
+	
+	@And("^Enter valid email and password login credentials$")
 	public void iEnterValidLoginCredentials() throws Throwable {
 		waitForElement(By.linkText(RunCucumberFeatures.locators.getProperty("didyouregisterText")));
 		WebElement didyouregisterText = DriverManager.getDriver()
@@ -97,12 +162,12 @@ public class HomePageSteps extends BaseSteps {
 
 		WebElement emailAddrInput = DriverManager.getDriver()
 				.findElement(By.linkText(RunCucumberFeatures.locators.getProperty("emailAddrInput")));
-		emailAddrInput.sendKeys("latisoni13@gmail.com");
+		emailAddrInput.sendKeys("enter some valid email id");
 		emailAddrInput.sendKeys(Keys.ENTER);
 
 		WebElement passwordInput = DriverManager.getDriver()
 				.findElement(By.linkText(RunCucumberFeatures.locators.getProperty("passwordInput")));
-		passwordInput.sendKeys("mind@123");
+		passwordInput.sendKeys("enter valid password");
 		passwordInput.sendKeys(Keys.ENTER);
 
 	}
