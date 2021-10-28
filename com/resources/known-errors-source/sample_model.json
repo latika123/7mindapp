@@ -1,0 +1,41 @@
+{
+  "@type": "com.github.mkolisnyk.cucumber.reporting.types.knownerrors.KnownErrorsModel", 
+  "errorDescriptions": [
+    {
+      "title":"@known: 7Mind App",
+      "description": "",
+      "filter": {
+        "alias": "7Mind App Login",
+        "dimensionValue": {
+          "@id": 0,
+          "name": "TAG"
+        },
+        "expression": "@known"
+      },
+      "priority": {
+        "name": "LOWEST",
+        "ordinal": 4
+      }
+    },
+    {
+      "title":"@knownbug: 7Mind App",
+      "description": "",
+      "filter": {
+        "alias": "7Mind App Login",
+        "dimensionValue": {
+          "@id": 0,
+          "name": "TAG"
+        },
+        "expression": "@knownbug"
+      },
+      "priority": {
+        "name": "LOWEST",
+        "ordinal": 4
+      }
+    }
+  ], 
+  "orderBy": {
+    "name": "FREQUENCY", 
+    "ordinal": 1
+  }
+}
